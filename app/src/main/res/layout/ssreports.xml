@@ -1,0 +1,41 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="64dp"
+    android:layout_centerHorizontal="true"
+    android:layout_centerVertical="true"
+    tools:context="com.example.android.ruraldevelopmenthackathonv1.SSReports"
+    >
+    <Button
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:text="Due date in 30 days"
+            android:id="@+id/rd_rep_duedtin30"
+            android:onClick="Duedtin30days"
+            />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:text="Missed Appointments"
+            android:id="@+id/rd_rep_missedapptmt"
+            android:onClick="MissedAppointments"
+            />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:text="High Risk pregnancies"
+            android:id="@+id/rd_rep_highrisk_preg"
+            android:onClick="HighRiskPregnancies"
+            />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:text="Babies at Risk"
+            android:id="@+id/rd_rep_babiesatrisk"
+            android:onClick="BabiesAtRisk"
+            />
+    </LinearLayout>

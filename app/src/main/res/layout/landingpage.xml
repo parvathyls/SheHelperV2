@@ -1,0 +1,35 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="64dp"
+    android:layout_centerHorizontal="true"
+    android:layout_centerVertical="true"
+    tools:context="com.example.android.ruraldevelopmenthackathonv1.LandingPage"
+    >
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:text="Administrator"
+        android:id="@+id/rd_landing_admin"
+        android:onClick="TransferToAdmin"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:text="Swasthya Saathi"
+        android:id="@+id/rd_landing_ss"
+        android:onClick="TransferToSS"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:text="Expectant Parent / New Parent"
+        android:id="@+id/rd_landing_parent"
+        android:onClick="TransferToParent"
+        />
+
+</LinearLayout>

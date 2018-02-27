@@ -1,0 +1,27 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="64dp"
+    android:layout_centerHorizontal="true"
+    android:layout_centerVertical="true"
+    tools:context="com.example.android.ruraldevelopmenthackathonv1.AdmLandingPage"
+    >
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:text="Register Swasthya Saathis"
+        android:id="@+id/rd_adm_registerSS"
+        android:onClick="RegisterSS"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:text="Reports"
+        android:id="@+id/rd_adm_reports"
+        android:onClick="AdminReports"
+        />
+</LinearLayout>

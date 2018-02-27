@@ -1,0 +1,137 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="64dp"
+    android:layout_centerHorizontal="true"
+    tools:context="com.example.android.ruraldevelopmenthackathonv1.MainActivity"
+    >
+    <TextView
+        android:id="@+id/rd_adm_ssid"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+    />
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="Register Swasthya Saathi"
+        android:id="@+id/title_label"
+        android:gravity="center_vertical"/>
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.8dp"
+        android:id="@+id/separator"
+        android:visibility="visible"
+        android:background="@android:color/black"
+        android:layout_marginBottom="5dp"
+        />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:height="16dp"
+        android:hint="Enter Name"
+        android:id="@+id/rd_adm_ss_name"
+        android:textSize="22sp"
+        android:inputType="text"
+        />
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:height="16dp"
+        android:hint="Enter Email"
+        android:id="@+id/rd_adm_ss_email"
+        android:textSize="22sp"
+        android:inputType="textEmailAddress"
+
+        />
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:height="16dp"
+        android:hint="Enter Phone Number"
+        android:id="@+id/rd_adm_ss_phone"
+        android:textSize="22sp"
+        android:inputType="phone"
+
+        />
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:height="16dp"
+        android:hint="Enter Password"
+        android:id="@+id/rd_adm_ss_password"
+        android:textSize="22sp"
+        android:inputType="textPassword"
+
+        />
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:height="16dp"
+        android:hint="Re-enter Password"
+        android:id="@+id/rd_adm_ss_repassword"
+        android:textSize="22sp"
+        android:inputType="textPassword"
+
+        />
+    <Spinner
+        android:id="@+id/rd_adm_ss_language"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"/>
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:height="16dp"
+        android:hint="Village Name"
+        android:id="@+id/rd_adm_ss_village"
+        android:textSize="22sp"
+        android:inputType="textPostalAddress"
+        />
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:height="16dp"
+        android:hint="Postal Code"
+        android:id="@+id/rd_adm_ss_postalcode"
+        android:textSize="22sp"
+        android:inputType="textPostalAddress"
+        />
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        >
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:text="Register"
+        android:id="@+id/rd_adm_addSS"
+        android:onClick="SaveSS"
+        android:layout_marginLeft="50dp"
+        android:layout_alignParentLeft="true"
+        />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="Clear"
+            android:id="@+id/rd_adm_clearSS"
+            android:onClick="ClearSS"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="50dp"
+            />
+    </RelativeLayout>
+</LinearLayout>
+</ScrollView>
