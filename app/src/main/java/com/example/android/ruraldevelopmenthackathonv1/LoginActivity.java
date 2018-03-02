@@ -5,10 +5,13 @@ package com.example.android.ruraldevelopmenthackathonv1;
  */
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,6 +30,7 @@ public class LoginActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        final Context context=this;
 
         // User Session Manager
         session = new UserSessionManager(getApplicationContext());
@@ -67,6 +71,8 @@ public class LoginActivity extends Activity {
                     }
 
                     if (savedPassword.equals(password)) {
+                        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+                        prefs.edit().putBoolean("Islogin", true).commit(); // islogin is a boolean value of your login status
 
                         // Creating user login session
                         // Statically storing name="Android Example"

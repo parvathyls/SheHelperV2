@@ -192,7 +192,22 @@ public final class SampleDBContract {
                 ")";
 
     }
+            public static class AdminDB implements BaseColumns {
+                public static final String AdmTbl = "rd_admin";
 
+                public static final String admin_id = "admin_id";
+                public static final String email = "email";
+                public static final String password = "password";
+                public static final String phone="phone";
+                public static final String CREATE_ADMIN_TBL = "CREATE TABLE IF NOT EXISTS " +
+                        AdmTbl + " (" +
+                        admin_id + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                        email + " TEXT, " +
+                        password + " TEXT, " +
+                        phone + " INTEGER " +
+                        ")";
+
+            }
     public static class SampleDBSQLiteHelper extends SQLiteOpenHelper {
 
         private static final int DATABASE_VERSION = 5;
@@ -209,6 +224,7 @@ public final class SampleDBContract {
             sqLiteDatabase.execSQL(BabyDB.CREATE_BABYTABLE);
             sqLiteDatabase.execSQL(MotherApptmt.CREATE_MOTHER_APPTMT);
             sqLiteDatabase.execSQL(BabyApptmt.CREATE_BABY_APPTMT);
+            sqLiteDatabase.execSQL(AdminDB.CREATE_ADMIN_TBL);
         }
 
         @Override
@@ -218,6 +234,7 @@ public final class SampleDBContract {
             sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + BabyDB.BabyTbl);
             sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + MotherApptmt.MotherApptmtTbl);
             sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + BabyApptmt.BabyApptmtTbl);
+            sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + AdminDB.AdmTbl);
             onCreate(sqLiteDatabase);
         }
     }

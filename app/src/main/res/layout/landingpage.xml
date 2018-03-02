@@ -31,5 +31,11 @@
         android:id="@+id/rd_landing_parent"
         android:onClick="TransferToParent"
         />
-
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:text="Register Admin"
+        android:id="@+id/rd_register_admin"
+        android:onClick="RegisterAdmin"
+        />
 </LinearLayout>
