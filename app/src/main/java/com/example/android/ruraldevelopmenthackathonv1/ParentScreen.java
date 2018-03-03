@@ -144,8 +144,8 @@ public class ParentScreen extends AppCompatActivity {
         notificationBuilder.setAutoCancel(true)
                 .setDefaults(Notification.DEFAULT_ALL)
                 .setWhen(System.currentTimeMillis())
-                /*.setSmallIcon(R.drawable.ic_launcher)
-                .setTicker("Hearty365")*/
+                .setSmallIcon(R.drawable.ic_launcher_background)
+                .setTicker("Hearty365")
                 .setPriority(Notification.PRIORITY_MAX) // this is deprecated in API 26 but you can still use for below 26. check below update for 26 API
                 .setContentTitle("Appointment Alert")
                 .setContentText("Your next appointment is on "+apptmt_dt)
