@@ -46,11 +46,30 @@ public class LandingPage  extends AppCompatActivity{
         button_text =((Button)View).getText().toString();
         if(button_text.equals("Administrator"))
         {
-//            Intent admin = new Intent(this,MainActivity.class);
-            ((RDGlobal) this.getApplication()).setCurrentRole("Admin");
+            SQLiteDatabase database = new SampleDBContract.SampleDBSQLiteHelper(this).getWritableDatabase();
 
-            Intent admin = new Intent(this,LoginActivity.class);
-            startActivity(admin);
+            ContentValues values = new ContentValues();
+            values.put(SampleDBContract.AdminDB.email, "first.1000days@gmail.com");
+            values.put(SampleDBContract.AdminDB.password, "test123");
+            values.put(SampleDBContract.AdminDB.phone, "9980855766");
+            Long newRowId;
+            //SQLiteDatabase db = table.getWritableDatabase();
+            String count = "SELECT count(*) FROM rd_admin";
+            Cursor mcursor = database.rawQuery(count, null);
+            mcursor.moveToFirst();
+            int icount = mcursor.getInt(0);
+            if(icount>0){
+                Toast.makeText(getApplicationContext(),
+                        "Admin login already exists: Please use existing login.",
+                        Toast.LENGTH_LONG).show();
+            }
+            else
+            {
+                newRowId = database.insert(SampleDBContract.AdminDB.AdmTbl, null, values);
+            }
+            ((RDGlobal) this.getApplication()).setCurrentRole("Admin");
+            Intent adm = new Intent(this,LoginActivity.class);
+            startActivity(adm);
         }
 
     }
@@ -91,16 +110,32 @@ public class LandingPage  extends AppCompatActivity{
             values.put(SampleDBContract.AdminDB.password, "test123");
             values.put(SampleDBContract.AdminDB.phone, "9980855766");
             Long newRowId;
-            if (SampleDBContract.AdminDB.AdmTbl.isEmpty()) {
-                newRowId = database.insert(SampleDBContract.AdminDB.AdmTbl, null, values);
-            }else{
+            //SQLiteDatabase db = table.getWritableDatabase();
+            String count = "SELECT count(*) FROM rd_admin";
+            Cursor mcursor = database.rawQuery(count, null);
+            mcursor.moveToFirst();
+            int icount = mcursor.getInt(0);
+            if(icount>0){
                 Toast.makeText(getApplicationContext(),
                         "Admin login already exists: Please use existing login.",
                         Toast.LENGTH_LONG).show();
             }
+            else
+            {
+                newRowId = database.insert(SampleDBContract.AdminDB.AdmTbl, null, values);
+            }
+
+            /*if (SampleDBContract.AdminDB.AdmTbl.isEmpty()) {
+                newRowId = database.insert(SampleDBContract.AdminDB.AdmTbl, null, values);
+            }else{
+
+                Toast.makeText(getApplicationContext(),
+                        "Admin login already exists: Please use existing login.",
+                        Toast.LENGTH_LONG).show();
+            }*/
             ((RDGlobal) this.getApplication()).setCurrentRole("Admin");
-            Intent ss = new Intent(this,LoginActivity.class);
-            startActivity(ss);
+            Intent adm = new Intent(this,LoginActivity.class);
+            startActivity(adm);
         }
 
     }

@@ -86,7 +86,7 @@ public final class SampleDBContract {
                 mother_age + " INTEGER, " +
                 par_phone + " INTEGER, " +
                 par_email + " TEXT, " +
-                par_password + "TEXT, " +
+                par_password + " TEXT, " +
                 par_em_contact_name + " TEXT, " +
                 par_em_contact_phone + " INTEGER, " +
                 par_lang + " TEXT, " +
@@ -210,7 +210,7 @@ public final class SampleDBContract {
             }
     public static class SampleDBSQLiteHelper extends SQLiteOpenHelper {
 
-        private static final int DATABASE_VERSION = 5;
+        private static final int DATABASE_VERSION = 6;
         public static final String DATABASE_NAME = "sample_database";
 
         public SampleDBSQLiteHelper(Context context) {

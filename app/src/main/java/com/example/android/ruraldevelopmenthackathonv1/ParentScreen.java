@@ -1,6 +1,7 @@
 package com.example.android.ruraldevelopmenthackathonv1;
 
 import android.Manifest;
+import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -9,7 +10,9 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -34,6 +37,7 @@ import static android.view.View.GONE;
 public class ParentScreen extends AppCompatActivity {
     UserSessionManager session;
     static String parent_id;
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -122,8 +126,9 @@ public class ParentScreen extends AppCompatActivity {
             startActivity(callIntent);
         }
     }
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     public void AddNotification(String apptmt_dt){
-        final Intent emptyIntent = new Intent();
+        /*final Intent emptyIntent = new Intent();
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, emptyIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(this)
@@ -132,7 +137,22 @@ public class ParentScreen extends AppCompatActivity {
                         .setContentText("Your next appointment is on "+apptmt_dt)
                         .setContentIntent(pendingIntent);
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.notify(0, mBuilder.build());
+        notificationManager.notify(0, mBuilder.build());*/
+
+        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, "M_CH_ID");
+
+        notificationBuilder.setAutoCancel(true)
+                .setDefaults(Notification.DEFAULT_ALL)
+                .setWhen(System.currentTimeMillis())
+                /*.setSmallIcon(R.drawable.ic_launcher)
+                .setTicker("Hearty365")*/
+                .setPriority(Notification.PRIORITY_MAX) // this is deprecated in API 26 but you can still use for below 26. check below update for 26 API
+                .setContentTitle("Appointment Alert")
+                .setContentText("Your next appointment is on "+apptmt_dt)
+                .setContentInfo("Info");
+
+        NotificationManager notificationManager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.notify(1, notificationBuilder.build());
     }
 
 }

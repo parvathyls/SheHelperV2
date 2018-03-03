@@ -2,6 +2,7 @@ package com.example.android.ruraldevelopmenthackathonv1;
 
 import android.app.DatePickerDialog;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.icu.text.SimpleDateFormat;
 import android.os.Build;
 import android.os.Bundle;
@@ -521,5 +522,9 @@ public class RegisterParents   extends AppCompatActivity
             Toast.makeText(this, "Row Id:" + viewBabyID.getText().toString() + " updated", Toast.LENGTH_LONG).show();
         }
 
+    }
+    public void SSLandingPage(View view){
+        Intent SS = new Intent(this,SSLandingPage.class);
+        startActivity(SS);
     }
 }
