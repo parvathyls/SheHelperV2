@@ -3,9 +3,14 @@
 
         import android.content.Context;
         import android.database.sqlite.SQLiteDatabase;
+        import android.database.sqlite.SQLiteException;
         import android.database.sqlite.SQLiteOpenHelper;
+        import android.os.Environment;
         import android.provider.BaseColumns;
         import android.util.Log;
+        import android.widget.Toast;
+
+        import java.io.File;
 
         /**
  * Created by psivapra on 2/16/2018.
@@ -209,16 +214,29 @@ public final class SampleDBContract {
 
             }
     public static class SampleDBSQLiteHelper extends SQLiteOpenHelper {
-
-        private static final int DATABASE_VERSION = 6;
+        private static final String DATABASE_PATH = "data/data/com.example.android.ruraldevelopmenthackathonv1/databases/";
+        private static final int DATABASE_VERSION = 5;
         public static final String DATABASE_NAME = "sample_database";
 
         public SampleDBSQLiteHelper(Context context) {
             super(context, DATABASE_NAME, null, DATABASE_VERSION);
+            try{
+                String myPath = DATABASE_PATH + DATABASE_NAME; // also check the extension of you db file
+                File dbfile = new File(myPath);
+                if( dbfile.exists())
+                Toast.makeText(context, "database exists", Toast.LENGTH_LONG).show();
+                else
+                Toast.makeText(context, "cant find database", Toast.LENGTH_LONG).show();
+            }
+            catch(SQLiteException e){
+                System.out.println("Database doesn't exist");
+            }
+
         }
 
         @Override
         public void onCreate(SQLiteDatabase sqLiteDatabase) {
+            //sqLiteDatabase.openDatabase(DATABASE_PATH + DATABASE_NAME, null, SQLiteDatabase.CREATE_IF_NECESSARY);
             sqLiteDatabase.execSQL(SampleDBContract.SSPerson.CREATE_TABLE);
             sqLiteDatabase.execSQL(ParentDB.CREATE_PARENTTABLE);
             sqLiteDatabase.execSQL(BabyDB.CREATE_BABYTABLE);
@@ -226,7 +244,6 @@ public final class SampleDBContract {
             sqLiteDatabase.execSQL(BabyApptmt.CREATE_BABY_APPTMT);
             sqLiteDatabase.execSQL(AdminDB.CREATE_ADMIN_TBL);
         }
-
         @Override
         public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
             sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + SampleDBContract.SSPerson.TABLE_NAME);

@@ -49,7 +49,7 @@ public class ParentScreen extends AppCompatActivity {
         LinearLayout babyLayout=(LinearLayout) findViewById(R.id.rd_ss_babydetails_layout);
         RelativeLayout duedateLayout=(RelativeLayout)findViewById(R.id.due_dt_layout);
         RelativeLayout motherapptmtLayout=(RelativeLayout)findViewById(R.id.mother_current_apptmt_layout);
-        SQLiteDatabase newDB = new SampleDBContract.SampleDBSQLiteHelper(this).getWritableDatabase();
+        /*SQLiteDatabase newDB = new SampleDBContract.SampleDBSQLiteHelper(this).getWritableDatabase();
         Cursor c = newDB.rawQuery("SELECT parent_id,mother_name,due_dt,next_apptmt_dt FROM rd_parent where par_email='"+email+"'", null);
         if (c != null ) {
             if (c.moveToFirst()) {
@@ -85,7 +85,17 @@ public class ParentScreen extends AppCompatActivity {
                     }
                 } while (c.moveToNext());
             }
-        }
+        }*/
+        TextView motherName = (TextView) findViewById(R.id.rd_ss_mother_name);
+        motherName.setText("Leela Thakur");
+        babyLayout.setVisibility(GONE);
+        duedateLayout.setVisibility(View.VISIBLE);
+        TextView due_dt=(TextView) findViewById(R.id.rd_ss_due_dt);
+        due_dt.setText("17/09/2019");
+        motherapptmtLayout.setVisibility(View.VISIBLE);
+        TextView mother_appt_dt=(TextView) findViewById(R.id.rd_ss_mother_apptmt_dt);
+        mother_appt_dt.setText("17/02/2019");
+        apptmt_dt="17/02/2019";
         AddNotification(apptmt_dt);
         final EditText searchBox = (EditText) findViewById(R.id.rd_ss_searchbox);
         searchBox.setOnTouchListener(new View.OnTouchListener() {

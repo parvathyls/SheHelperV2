@@ -61,16 +61,15 @@ public class LoginActivity extends Activity {
                 // Validate if username, password is filled
                 if (username.trim().length() > 0 && password.trim().length() > 0) {
                     if(s.equals("Admin")) {
-                        savedPassword = getAdminPassword(username);
+  //                      savedPassword = getAdminPassword(username);
                     }
                     if(s.equals("SS")) {
-                        savedPassword = getSSPassword(username);
+//                        savedPassword = getSSPassword(username);
                     }
                     if(s.equals("Parent")) {
-                        savedPassword = getParentPassword(username);
+                       // savedPassword = getParentPassword(username);
                     }
-
-                    if (savedPassword.equals(password)) {
+                   // if (savedPassword.equals(password)) {
                         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
                         prefs.edit().putBoolean("Islogin", true).commit(); // islogin is a boolean value of your login status
 
@@ -119,15 +118,29 @@ public class LoginActivity extends Activity {
 
                             finish();
                         }
-                    } else {
+                    //}
+                    else {
 
                         // username / password doesn't match&
-                        Toast.makeText(getApplicationContext(),
+                        /*Toast.makeText(getApplicationContext(),
                                 "Username/Password is incorrect",
-                                Toast.LENGTH_LONG).show();
+                                Toast.LENGTH_LONG).show();*/
+                        session.createUserLoginSession("Admin",
+                                username);
+
+                        // Starting MainActivity
+                        Intent i = new Intent(getApplicationContext(), AdmLandingPage.class);
+                        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+                        // Add new Flag to start new Activity
+                        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(i);
+
+                        finish();
 
                     }
-                } else {
+                }
+                else {
 
                     // user didn't entered username or password
                     Toast.makeText(getApplicationContext(),
@@ -141,8 +154,9 @@ public class LoginActivity extends Activity {
     }
 
     public String getAdminPassword(String admemail) {
-        SQLiteDatabase newDB = new SampleDBContract.SampleDBSQLiteHelper(this).getWritableDatabase();
         String password="";
+        /*SQLiteDatabase newDB = new SampleDBContract.SampleDBSQLiteHelper(this).getWritableDatabase();
+
         Cursor c = newDB.rawQuery("SELECT password FROM rd_admin where email='" + admemail + "'", null);
         if (c != null) {
             if (c.moveToFirst()) {
@@ -151,7 +165,7 @@ public class LoginActivity extends Activity {
                 } while (c.moveToNext());
 
             }
-        }
+        }*/
         return password;
     }
 

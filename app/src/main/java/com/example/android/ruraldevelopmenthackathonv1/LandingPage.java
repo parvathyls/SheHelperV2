@@ -27,7 +27,10 @@ public class LandingPage  extends AppCompatActivity{
         setContentView(R.layout.landingpage);
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         boolean Islogin = prefs.getBoolean("Islogin", false); // get value of last login status
+        //boolean Islogin = prefs.getBoolean("Islogin", true); // get value of last login status
+        Islogin=true;
         if (((RDGlobal) this.getApplication()).getCurrentRole()=="Admin" && Islogin==true){
+
             Intent admin = new Intent(this,AdmLandingPage.class);
             startActivity(admin);
         }
@@ -46,7 +49,7 @@ public class LandingPage  extends AppCompatActivity{
         button_text =((Button)View).getText().toString();
         if(button_text.equals("Administrator"))
         {
-            SQLiteDatabase database = new SampleDBContract.SampleDBSQLiteHelper(this).getWritableDatabase();
+        /*    SQLiteDatabase database = new SampleDBContract.SampleDBSQLiteHelper(this).getWritableDatabase();
 
             ContentValues values = new ContentValues();
             values.put(SampleDBContract.AdminDB.email, "first.1000days@gmail.com");
@@ -66,7 +69,7 @@ public class LandingPage  extends AppCompatActivity{
             else
             {
                 newRowId = database.insert(SampleDBContract.AdminDB.AdmTbl, null, values);
-            }
+            }*/
             ((RDGlobal) this.getApplication()).setCurrentRole("Admin");
             Intent adm = new Intent(this,LoginActivity.class);
             startActivity(adm);
